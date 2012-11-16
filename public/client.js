@@ -1,6 +1,6 @@
 // client interface for kinect-drone
 
-var socket, flying,
+var socket, flying, takeoff,
 	rhand, lhand, 
 	leftX, leftY, rightX, rightY,
 	leftXpx, leftYpx, rightXpx, rightYpx
@@ -8,7 +8,8 @@ var socket, flying,
 
 // data for control areas
 var areas = [
-	{name: "takeOff", top: 50, left: 300},
+	{name: "takeoff", top: 50, left: 300},
+	{name: "stop", top: 350, left: 300},
 	{name: "land", top: 650, left: 300},
 	{name: "up", top: 200, left: 300},
 	{name: "down", top: 500, left: 300},
@@ -27,7 +28,8 @@ window.onload = function(){
 		lhand 	= document.getElementById('left-hand'),
 		cord1 	= document.getElementById('cord1'),
 		cord2 	= document.getElementById('cord2'),
-		flying 	= document.getElementById('flying');
+		flying 	= document.getElementById('flying'),
+		takeoff 	= document.getElementById('takeoff');
 
 	setUpAreas(areas);
 	socket = io.connect();
@@ -91,7 +93,8 @@ function setUpAreas(arr){
 
 // test to see if either of the hand is over a control area
 function isOverArea(data, arr){
-	var i = arr.length;
+	var i = arr.length,
+		found = false;
 	while (i--) {
 		var name 	= arr[i].name,
 			left 	= arr[i].left,
@@ -106,6 +109,7 @@ function isOverArea(data, arr){
 			arr[i].elt.style['background-color'] = '#f00';
 			console.log('right hand over: ' + name);
 			emitCommand(name);
+			found = true;
 		}
 
 		// left within height and width
@@ -113,20 +117,29 @@ function isOverArea(data, arr){
 			arr[i].elt.style['background-color'] = '#f00';
 			console.log('left hand over: ' + name)
 			emitCommand(name);
+			found = true;
 		}	
 	}
+
+	// stop means do not move hover where you are
+	if(!found)
+		emitCommand('stop');
 }
 
 
 // send command via websockets to node.js server
 function emitCommand(cmd){
+	var flying 		= document.getElementById('flying'),
+		takeoff 	= document.getElementById('takeoff');
+	
+	// this send command to server and on to the drone
 	socket.emit('move', cmd);
 
 	// if takeoff - after 2 secs display other controls
-	if(cmd === 'takeOff'){
+	if(cmd === 'takeoff'){
 		setTimeout(function(){
 			flying.style.display = 'block';
-			takeOff.style.display = 'none';
+			takeoff.style.display = 'none';
 		}, 2000)
 	}
 
@@ -134,7 +147,7 @@ function emitCommand(cmd){
 	if(cmd === 'land'){
 		setTimeout(function(){
 			flying.style.display = 'none';
-			takeOff.style.display = 'block';
+			takeoff.style.display = 'block';
 		}, 2000)
 	}
 }

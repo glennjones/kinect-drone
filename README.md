@@ -20,16 +20,16 @@ This should work with either the standard Xbox360 Kinect or the Kinect for Windo
 
 Install this project
 
-    $ npm install https://github.com/glennjones/kinect-drone.git
+    $ npm install git@github.com:glennjones/kinect-drone.git
 
 1. Open the file kinect-websockets.pde with processing application.
 
 2. Start the node.js server
 
-    $ node app.js
+        $ node app.js
 
 3. Once processing is displaying the video stream from Kinect and the node server is up and running, open the web client
 
-    http://localhost:3001/index.html
+        http://localhost:3001/index.html
 
 Have fun

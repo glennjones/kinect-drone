@@ -1,6 +1,7 @@
   // kinect-drone server
 
-  var http      = require('http')
+  var http      = require('http'),
+      path      = require('path')
       express   = require("express"),
       sio       = require("socket.io"),
       ardrone   = require("ar-drone"),
@@ -37,6 +38,32 @@
 
   // execute drone command
   function move(cmd){
-    drone.[cmd]
+
+    if(cmd === 'stop')
+      drone.stop()
+
+    if(cmd === 'takeoff'){
+      drone.disableEmergency();
+      drone.takeoff()
+    }
+
+    if(cmd === 'land'){
+      // use stop to make it hover then land
+      drone.stop();
+      drone.land();
+    }
+      
+    if(cmd === 'left')
+      drone.left(0.2)
+
+    if(cmd === 'right')
+      drone.right(0.2)
+
+    if(cmd === 'backwards')
+      drone.back(0.2)
+
+    if(cmd === 'forwards')
+      drone.front(0.2)
+
     console.log(cmd)
   }
