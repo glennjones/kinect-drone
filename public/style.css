@@ -1,0 +1,63 @@
+/* client interface for kinect-drone */
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+
+body {
+  padding:2em;
+  font:16px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:#333;
+  font-weight:300;
+  font-size: 100%;
+}
+
+button{
+	-webkit-appearance: none;
+	background-color: #eee;
+	border: 1px solid #999;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	display: none;
+	top: 0px;
+	left: 0px;
+	font-size: 16px;
+}
+
+button:hover {
+	border: 2px solid #333;
+}
+
+button:active{
+	background-color: #0f0;
+}
+
+#frame{
+	width: 800px;
+	height: 800px;
+	border: 1px solid black;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+#left-hand, #right-hand{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	top: 400px;
+	left: 350px;
+	border-radius: 50%;
+	margin-left: -10px;
+}
+#right-hand{
+	background-color: black;
+	left: 450px;
+}
+#text1, #text2{
+	font-size: 4px;
+	margin-left: 810px;
+}
+
+#flying{
+	display: none;
+}

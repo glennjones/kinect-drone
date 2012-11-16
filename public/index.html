@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+	<title>Client interface for kinect-drone</title>
+	<link rel="stylesheet" media="all" href="style.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="client.js"></script>
+
+</head>
+<body>
+
+	<p id="cord1"></p>
+	<p id="cord2"></p>
+
+	<section id="frame">
+
+		<button id="takeOff">take off</button>
+		<button id="land">land</button>
+		<div id="flying">
+			<button id="up">up</button>
+			<button id="down">down</button>
+			<button id="left">left</button>
+			<button id="right">right</button>
+			<button id="clockwise">rotate right</button>
+			<button id="counterClockwise">rotate left</button>
+			<button id="backwards">backwards</button>
+			<button id="forwards">forwards</button>
+		</div>
+		<div id="left-hand"></div>
+		<div id="right-hand"></div>
+
+	</section>
+
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+{
+  "author": "Glenn Jones",
+  "name": "kinect-drone",
+  "description": "wave your hands and it flys a ar-drone",
+  "version": "0.0.1",
+  "dependencies": {
+    "ar-drone": "0.0.x",
+    "socket.io": "0.9.x",
+    "express": "3.0.x"
+    },
+  "engines": {
+    "node": ">= 0.8.x"
+  }
+}
