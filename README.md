@@ -22,7 +22,7 @@ Install this project
 
     $ npm install git@github.com:glennjones/kinect-drone.git
 
-1. Open the file kinect-websockets.pde with processing application.
+1. Open the file kinectwebsockets.pde with processing application.
 
 2. Start the node.js server
 

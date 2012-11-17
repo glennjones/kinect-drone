@@ -104,13 +104,13 @@ function isOverArea(data, arr){
 
 		arr[i].elt.style['background-color'] = '#eee';
 
-		// right within height and width
+/*		// right within height and width
 		if(data[0] > top &&  data[0] < bottom && data[1] > left &&  data[1] < right){
 			arr[i].elt.style['background-color'] = '#f00';
 			console.log('right hand over: ' + name);
 			emitCommand(name);
 			found = true;
-		}
+		}*/
 
 		// left within height and width
 		if(data[2] > top &&  data[2] < bottom && data[3] > left &&  data[3] < right){
